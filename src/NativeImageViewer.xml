@@ -12,6 +12,28 @@
                 <caption>Image to view</caption>
                 <description></description>
             </property>
+            <property key="imageWidthAttr" type="attribute">
+                <caption>Image width</caption>
+                <description></description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="imageHeightAttr" type="attribute">
+                <caption>Image height</caption>
+                <description></description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="closeButtonIcon" type="icon">
+                <caption>Close button icon</caption>
+                <description></description>
+            </property>
+            <property key="onCloseAction" type="action" required="false">
+                <caption>On close action</caption>
+                <description>Action to trigger when image viewer closed</description>
+            </property>
         </propertyGroup>
     </properties>
 </widget>

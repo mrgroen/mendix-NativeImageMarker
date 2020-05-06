@@ -16,6 +16,8 @@ public class TestImage extends system.proxies.Image
 	 */
 	public enum MemberNames
 	{
+		Height("Height"),
+		Width("Width"),
 		PublicThumbnailPath("PublicThumbnailPath"),
 		FileID("FileID"),
 		Name("Name"),
@@ -80,6 +82,78 @@ public class TestImage extends system.proxies.Image
 		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//TestModule.TestImage" + xpathConstraint))
 			result.add(testmodule.proxies.TestImage.initialize(context, obj));
 		return result;
+	}
+
+	/**
+	 * @return value of Height
+	 */
+	public final java.lang.Integer getHeight()
+	{
+		return getHeight(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Height
+	 */
+	public final java.lang.Integer getHeight(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Height.toString());
+	}
+
+	/**
+	 * Set value of Height
+	 * @param height
+	 */
+	public final void setHeight(java.lang.Integer height)
+	{
+		setHeight(getContext(), height);
+	}
+
+	/**
+	 * Set value of Height
+	 * @param context
+	 * @param height
+	 */
+	public final void setHeight(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer height)
+	{
+		getMendixObject().setValue(context, MemberNames.Height.toString(), height);
+	}
+
+	/**
+	 * @return value of Width
+	 */
+	public final java.lang.Integer getWidth()
+	{
+		return getWidth(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Width
+	 */
+	public final java.lang.Integer getWidth(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Width.toString());
+	}
+
+	/**
+	 * Set value of Width
+	 * @param width
+	 */
+	public final void setWidth(java.lang.Integer width)
+	{
+		setWidth(getContext(), width);
+	}
+
+	/**
+	 * Set value of Width
+	 * @param context
+	 * @param width
+	 */
+	public final void setWidth(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer width)
+	{
+		getMendixObject().setValue(context, MemberNames.Width.toString(), width);
 	}
 
 	@java.lang.Override
