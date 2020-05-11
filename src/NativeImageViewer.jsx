@@ -2,7 +2,6 @@ import { Component, createElement } from "react";
 import { Dimensions, Modal, PixelRatio } from "react-native";
 import { Image } from "mendix/components/native/Image";
 import ImageZoom from "react-native-image-pan-zoom";
-import { CloseButton } from "./components/CloseButton";
 
 export class NativeImageViewer extends Component {
     state = {
@@ -22,17 +21,17 @@ export class NativeImageViewer extends Component {
 
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
         return (
-            <Modal visible={this.state.modalVisible} transparent={true}>
+            <Modal visible={this.state.modalVisible} transparent={false}>
                 <ImageZoom
                     cropWidth={Dimensions.get("window").width}
                     cropHeight={Dimensions.get("window").height}
                     imageWidth={imageWidth}
                     imageHeight={imageHeight}
                     enableCenterFocus={false}
+                    onClick={() => this.onClick()}
                 >
                     {this.renderImage(imageStyle)}
                 </ImageZoom>
-                <CloseButton closeButtonIcon={this.props.closeButtonIcon} onClick={() => this.onClick()}/>
             </Modal>
         );
     }

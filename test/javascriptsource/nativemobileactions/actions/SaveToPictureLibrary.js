@@ -6,7 +6,6 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { CameraRoll } from "react-native";
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -18,6 +17,8 @@ import { CameraRoll } from "react-native";
 export async function SaveToPictureLibrary(picture) {
 	// BEGIN USER CODE
     // Documentation https://facebook.github.io/react-native/docs/cameraroll#savetocameraroll
+    var _a;
+    const CameraRoll = (_a = require("@react-native-community/cameraroll")) !== null && _a !== void 0 ? _a : require("react-native").CameraRoll;
     if (!picture) {
         return Promise.reject(new Error("Input parameter 'Picture' is required"));
     }
