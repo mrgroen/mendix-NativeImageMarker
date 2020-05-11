@@ -23,7 +23,7 @@ export class NativeImageViewer extends Component {
 
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
         return (
-            <Modal visible={this.state.modalVisible} transparent={false}>
+            <Modal visible={this.state.modalVisible} transparent={true}>
                 <ImageZoom
                     cropWidth={this.state.windowWidth}
                     cropHeight={this.state.windowHeight}
