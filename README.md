@@ -1,17 +1,15 @@
 ## NativeImageViewer
-[Mendix native image viewer]
+View images, with zoom and pan
 
 ## Features
-[feature highlights]
+- Shows the image full screen 
+- Allows zooming and panning
+- Tap image to close viewer
 
 ## Usage
-[step by step instructions]
+- Place widget on a page with a full page layout.
+- No other content on the page will be visible as the widget is a modal
+- Configure a close action, usually just Close page is sufficient.
 
-## Demo project
-[link to sandbox]
-
-## Issues, suggestions and feature requests
-[link to GitHub issues]
-
-## Development and contribution
-[specify contribute]
+## Known issue
+- On iOS device rotation does not work correctly, only portrait works well. Issue outside the widget.
