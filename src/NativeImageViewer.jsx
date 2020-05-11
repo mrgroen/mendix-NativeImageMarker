@@ -5,7 +5,9 @@ import ImageZoom from "react-native-image-pan-zoom";
 
 export class NativeImageViewer extends Component {
     state = {
-        modalVisible: true
+        modalVisible: true,
+        windowWidth: Dimensions.get("window").width,
+        windowHeight: Dimensions.get("window").height
     };
     render() {
         const { imageToView, imageWidthAttr, imageHeightAttr } = this.props;
@@ -23,11 +25,12 @@ export class NativeImageViewer extends Component {
         return (
             <Modal visible={this.state.modalVisible} transparent={false}>
                 <ImageZoom
-                    cropWidth={Dimensions.get("window").width}
-                    cropHeight={Dimensions.get("window").height}
+                    cropWidth={this.state.windowWidth}
+                    cropHeight={this.state.windowHeight}
                     imageWidth={imageWidth}
                     imageHeight={imageHeight}
                     enableCenterFocus={false}
+                    minScale={0.3}
                     onClick={() => this.onClick()}
                 >
                     {this.renderImage(imageStyle)}
@@ -46,6 +49,14 @@ export class NativeImageViewer extends Component {
         }
     }
 
+    handler = (newDimensions) => {
+        console.info("NativeImageViewer dimension change handler, new width: " + newDimensions.window.width + ", height: " + newDimensions.window.height);
+        this.setState({
+            windowHeight: newDimensions.window.height,
+            windowWidth: newDimensions.window.width
+        });
+    };
+
     onClick() {
         // console.info("NativeImageViewer close button clicked");
         this.setState({
@@ -56,4 +67,14 @@ export class NativeImageViewer extends Component {
             onCloseAction.execute();
         }
     }
+
+    componentWillMount() {
+        Dimensions.addEventListener("change", this.handler);
+    }
+
+    componentWillUnmount() {
+        // Important to stop updating state after unmount
+        Dimensions.removeEventListener("change", this.handler);
+    }
+
 }
