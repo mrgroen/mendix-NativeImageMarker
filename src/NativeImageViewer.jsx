@@ -50,12 +50,12 @@ export class NativeImageViewer extends Component {
     }
 
     handler = newDimensions => {
-        console.info(
-            "NativeImageViewer dimension change handler, new width: " +
-                newDimensions.window.width +
-                ", height: " +
-                newDimensions.window.height
-        );
+        // console.info(
+        //     "NativeImageViewer dimension change handler, new width: " +
+        //         newDimensions.window.width +
+        //         ", height: " +
+        //         newDimensions.window.height
+        // );
         this.setState({
             windowHeight: newDimensions.window.height,
             windowWidth: newDimensions.window.width
