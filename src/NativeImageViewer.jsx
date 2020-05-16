@@ -49,8 +49,13 @@ export class NativeImageViewer extends Component {
         }
     }
 
-    handler = (newDimensions) => {
-        console.info("NativeImageViewer dimension change handler, new width: " + newDimensions.window.width + ", height: " + newDimensions.window.height);
+    handler = newDimensions => {
+        console.info(
+            "NativeImageViewer dimension change handler, new width: " +
+                newDimensions.window.width +
+                ", height: " +
+                newDimensions.window.height
+        );
         this.setState({
             windowHeight: newDimensions.window.height,
             windowWidth: newDimensions.window.width
@@ -68,7 +73,7 @@ export class NativeImageViewer extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         Dimensions.addEventListener("change", this.handler);
     }
 
@@ -76,5 +81,4 @@ export class NativeImageViewer extends Component {
         // Important to stop updating state after unmount
         Dimensions.removeEventListener("change", this.handler);
     }
-
 }
