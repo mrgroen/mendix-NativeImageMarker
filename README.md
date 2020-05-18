@@ -7,7 +7,7 @@ View images, with zoom and pan
 - Tap image to close viewer
 
 ## Image width / height
-Widget needs the image width/height. For images created in the backend, use CommunityCommons.GetImageDimensions. For images taken in the native app, the TakePicture JS action sets the dimensions on the image object. This is added in version
+Widget needs the image width/height. For images created in the backend, use CommunityCommons.GetImageDimensions. For images taken in the native app, the TakePicture JS action sets the dimensions on the image object. (TakePicture can return the dimensions as of version 1.1.2 of Native Mobile Resources.)
 
 ## Usage
 - Place widget on a page with a full page layout.
