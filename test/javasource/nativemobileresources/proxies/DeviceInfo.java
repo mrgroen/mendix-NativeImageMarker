@@ -2,7 +2,7 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
 public class DeviceInfo
 {
@@ -13,7 +13,7 @@ public class DeviceInfo
 	/**
 	 * Internal name of this entity
 	 */
-	public static final java.lang.String entityName = "NativeMobileActions.DeviceInfo";
+	public static final java.lang.String entityName = "NativeMobileResources.DeviceInfo";
 
 	/**
 	 * Enum describing members of this entity
@@ -64,15 +64,15 @@ public class DeviceInfo
 
 	public DeviceInfo(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileActions.DeviceInfo"));
+		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileResources.DeviceInfo"));
 	}
 
 	protected DeviceInfo(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject deviceInfoMendixObject)
 	{
 		if (deviceInfoMendixObject == null)
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("NativeMobileActions.DeviceInfo", deviceInfoMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileActions.DeviceInfo");
+		if (!com.mendix.core.Core.isSubClassOf("NativeMobileResources.DeviceInfo", deviceInfoMendixObject.getType()))
+			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileResources.DeviceInfo");
 
 		this.deviceInfoMendixObject = deviceInfoMendixObject;
 		this.context = context;
@@ -82,24 +82,24 @@ public class DeviceInfo
 	 * @deprecated Use 'DeviceInfo.load(IContext, IMendixIdentifier)' instead.
 	 */
 	@java.lang.Deprecated
-	public static nativemobileactions.proxies.DeviceInfo initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.DeviceInfo initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
-		return nativemobileactions.proxies.DeviceInfo.load(context, mendixIdentifier);
+		return nativemobileresources.proxies.DeviceInfo.load(context, mendixIdentifier);
 	}
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
-	public static nativemobileactions.proxies.DeviceInfo initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
+	public static nativemobileresources.proxies.DeviceInfo initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		return new nativemobileactions.proxies.DeviceInfo(context, mendixObject);
+		return new nativemobileresources.proxies.DeviceInfo(context, mendixObject);
 	}
 
-	public static nativemobileactions.proxies.DeviceInfo load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.DeviceInfo load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
-		return nativemobileactions.proxies.DeviceInfo.initialize(context, mendixObject);
+		return nativemobileresources.proxies.DeviceInfo.initialize(context, mendixObject);
 	}
 
 	/**
@@ -1129,7 +1129,7 @@ public class DeviceInfo
 
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
-			final nativemobileactions.proxies.DeviceInfo that = (nativemobileactions.proxies.DeviceInfo) obj;
+			final nativemobileresources.proxies.DeviceInfo that = (nativemobileresources.proxies.DeviceInfo) obj;
 			return getMendixObject().equals(that.getMendixObject());
 		}
 		return false;
@@ -1146,7 +1146,7 @@ public class DeviceInfo
 	 */
 	public static java.lang.String getType()
 	{
-		return "NativeMobileActions.DeviceInfo";
+		return "NativeMobileResources.DeviceInfo";
 	}
 
 	/**

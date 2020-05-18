@@ -2,7 +2,7 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
 public class WidgetExport
 {
@@ -13,7 +13,7 @@ public class WidgetExport
 	/**
 	 * Internal name of this entity
 	 */
-	public static final java.lang.String entityName = "NativeMobileActions.WidgetExport";
+	public static final java.lang.String entityName = "NativeMobileResources.WidgetExport";
 
 	/**
 	 * Enum describing members of this entity
@@ -40,15 +40,15 @@ public class WidgetExport
 
 	public WidgetExport(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileActions.WidgetExport"));
+		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileResources.WidgetExport"));
 	}
 
 	protected WidgetExport(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject widgetExportMendixObject)
 	{
 		if (widgetExportMendixObject == null)
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("NativeMobileActions.WidgetExport", widgetExportMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileActions.WidgetExport");
+		if (!com.mendix.core.Core.isSubClassOf("NativeMobileResources.WidgetExport", widgetExportMendixObject.getType()))
+			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileResources.WidgetExport");
 
 		this.widgetExportMendixObject = widgetExportMendixObject;
 		this.context = context;
@@ -58,24 +58,24 @@ public class WidgetExport
 	 * @deprecated Use 'WidgetExport.load(IContext, IMendixIdentifier)' instead.
 	 */
 	@java.lang.Deprecated
-	public static nativemobileactions.proxies.WidgetExport initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.WidgetExport initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
-		return nativemobileactions.proxies.WidgetExport.load(context, mendixIdentifier);
+		return nativemobileresources.proxies.WidgetExport.load(context, mendixIdentifier);
 	}
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
-	public static nativemobileactions.proxies.WidgetExport initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
+	public static nativemobileresources.proxies.WidgetExport initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		return new nativemobileactions.proxies.WidgetExport(context, mendixObject);
+		return new nativemobileresources.proxies.WidgetExport(context, mendixObject);
 	}
 
-	public static nativemobileactions.proxies.WidgetExport load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.WidgetExport load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
-		return nativemobileactions.proxies.WidgetExport.initialize(context, mendixObject);
+		return nativemobileresources.proxies.WidgetExport.initialize(context, mendixObject);
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class WidgetExport
 	 * Set value of Enumeration
 	 * @param enumeration
 	 */
-	public final nativemobileactions.proxies.Enumeration getEnumeration()
+	public final nativemobileresources.proxies.Enumeration getEnumeration()
 	{
 		return getEnumeration(getContext());
 	}
@@ -194,20 +194,20 @@ public class WidgetExport
 	 * @param context
 	 * @return value of Enumeration
 	 */
-	public final nativemobileactions.proxies.Enumeration getEnumeration(com.mendix.systemwideinterfaces.core.IContext context)
+	public final nativemobileresources.proxies.Enumeration getEnumeration(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.Enumeration.toString());
 		if (obj == null)
 			return null;
 
-		return nativemobileactions.proxies.Enumeration.valueOf((java.lang.String) obj);
+		return nativemobileresources.proxies.Enumeration.valueOf((java.lang.String) obj);
 	}
 
 	/**
 	 * Set value of Enumeration
 	 * @param enumeration
 	 */
-	public final void setEnumeration(nativemobileactions.proxies.Enumeration enumeration)
+	public final void setEnumeration(nativemobileresources.proxies.Enumeration enumeration)
 	{
 		setEnumeration(getContext(), enumeration);
 	}
@@ -217,7 +217,7 @@ public class WidgetExport
 	 * @param context
 	 * @param enumeration
 	 */
-	public final void setEnumeration(com.mendix.systemwideinterfaces.core.IContext context, nativemobileactions.proxies.Enumeration enumeration)
+	public final void setEnumeration(com.mendix.systemwideinterfaces.core.IContext context, nativemobileresources.proxies.Enumeration enumeration)
 	{
 		if (enumeration != null)
 			getMendixObject().setValue(context, MemberNames.Enumeration.toString(), enumeration.toString());
@@ -249,7 +249,7 @@ public class WidgetExport
 
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
-			final nativemobileactions.proxies.WidgetExport that = (nativemobileactions.proxies.WidgetExport) obj;
+			final nativemobileresources.proxies.WidgetExport that = (nativemobileresources.proxies.WidgetExport) obj;
 			return getMendixObject().equals(that.getMendixObject());
 		}
 		return false;
@@ -266,7 +266,7 @@ public class WidgetExport
 	 */
 	public static java.lang.String getType()
 	{
-		return "NativeMobileActions.WidgetExport";
+		return "NativeMobileResources.WidgetExport";
 	}
 
 	/**

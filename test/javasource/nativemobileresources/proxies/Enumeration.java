@@ -2,19 +2,15 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
-public enum PictureQuality
+public enum Enumeration
 {
-	original(new java.lang.String[][] { new java.lang.String[] { "en_US", "Original" } }),
-	low(new java.lang.String[][] { new java.lang.String[] { "en_US", "Low" } }),
-	medium(new java.lang.String[][] { new java.lang.String[] { "en_US", "Medium" } }),
-	high(new java.lang.String[][] { new java.lang.String[] { "en_US", "High" } }),
-	custom(new java.lang.String[][] { new java.lang.String[] { "en_US", "Custom" } });
+	Test(new java.lang.String[][] { new java.lang.String[] { "en_US", "Test" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private PictureQuality(java.lang.String[][] captionStrings)
+	private Enumeration(java.lang.String[][] captionStrings)
 	{
 		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
 		for (java.lang.String[] captionString : captionStrings)

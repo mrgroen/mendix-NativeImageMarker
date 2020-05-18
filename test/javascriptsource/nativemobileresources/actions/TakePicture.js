@@ -14,13 +14,15 @@ import ImagePicker from "react-native-image-picker";
 
 /**
  * @param {MxObject} picture - This field is required.
- * @param {"NativeMobileActions.PictureSource.camera"|"NativeMobileActions.PictureSource.imageLibrary"|"NativeMobileActions.PictureSource.either"} pictureSource - Select a picture from the library or the camera. The default is to let the user decide.
- * @param {"NativeMobileActions.PictureQuality.original"|"NativeMobileActions.PictureQuality.low"|"NativeMobileActions.PictureQuality.medium"|"NativeMobileActions.PictureQuality.high"|"NativeMobileActions.PictureQuality.custom"} pictureQuality - Set to empty to use default value 'medium'.
+ * @param {"NativeMobileResources.PictureSource.camera"|"NativeMobileResources.PictureSource.imageLibrary"|"NativeMobileResources.PictureSource.either"} pictureSource - Select a picture from the library or the camera. The default is to let the user decide.
+ * @param {"NativeMobileResources.PictureQuality.original"|"NativeMobileResources.PictureQuality.low"|"NativeMobileResources.PictureQuality.medium"|"NativeMobileResources.PictureQuality.high"|"NativeMobileResources.PictureQuality.custom"} pictureQuality - Set to empty to use default value 'medium'.
  * @param {Big} maximumWidth - The picture will be scaled to this maximum pixel width, while maintaing the aspect ratio.
  * @param {Big} maximumHeight - The picture will be scaled to this maximum pixel height, while maintaing the aspect ratio.
+ * @param {string} widthAttributeName - Integer attribute name of the image entity. If set, will receive the width of the captured picture.
+ * @param {string} heightAttributeName - Integer attribute name of the image entity. If set, will receive the height of the captured picture.
  * @returns {Promise.<boolean>}
  */
-export async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth, maximumHeight) {
+export async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth, maximumHeight, widthAttributeName, heightAttributeName) {
 	// BEGIN USER CODE
     // Documentation https://github.com/react-native-community/react-native-image-picker/blob/master/docs/Reference.md
     if (!picture) {
@@ -33,12 +35,34 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
     if (pictureQuality === "custom" && !maximumHeight && !maximumWidth) {
         return Promise.reject(new Error("Picture quality is set to 'Custom', but no maximum width or height was provided"));
     }
+    if (widthAttributeName) {
+        if (!picture.isNumeric(widthAttributeName)) {
+            return Promise.reject(new Error("Attribute " +
+                widthAttributeName +
+                " is no integer attribute or does not exist on entity " +
+                picture.getEntity()));
+        }
+    }
+    if (heightAttributeName) {
+        if (!picture.isNumeric(heightAttributeName)) {
+            return Promise.reject(new Error("Attribute " +
+                heightAttributeName +
+                " is no integer attribute or does not exist on entity " +
+                picture.getEntity()));
+        }
+    }
     return takePicture()
-        .then(uri => {
-        if (!uri) {
+        .then(response => {
+        if (!response || response.didCancel || !response.uri) {
             return false;
         }
-        return storeFile(picture, uri);
+        if (widthAttributeName) {
+            picture.set(widthAttributeName, response.width);
+        }
+        if (heightAttributeName) {
+            picture.set(heightAttributeName, response.height);
+        }
+        return storeFile(picture, response.uri);
     })
         .catch(error => {
         if (error === "canceled") {
@@ -61,7 +85,7 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
                     }
                     return reject(new Error(response.error));
                 }
-                return resolve(response.uri);
+                return resolve(response);
             });
         });
     }

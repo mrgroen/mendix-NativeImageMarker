@@ -2,7 +2,7 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
 public enum StatusBarStyle
 {

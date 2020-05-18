@@ -2,7 +2,7 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
 public class Parameter
 {
@@ -13,7 +13,7 @@ public class Parameter
 	/**
 	 * Internal name of this entity
 	 */
-	public static final java.lang.String entityName = "NativeMobileActions.Parameter";
+	public static final java.lang.String entityName = "NativeMobileResources.Parameter";
 
 	/**
 	 * Enum describing members of this entity
@@ -46,15 +46,15 @@ public class Parameter
 
 	public Parameter(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileActions.Parameter"));
+		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileResources.Parameter"));
 	}
 
 	protected Parameter(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject parameterMendixObject)
 	{
 		if (parameterMendixObject == null)
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("NativeMobileActions.Parameter", parameterMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileActions.Parameter");
+		if (!com.mendix.core.Core.isSubClassOf("NativeMobileResources.Parameter", parameterMendixObject.getType()))
+			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileResources.Parameter");
 
 		this.parameterMendixObject = parameterMendixObject;
 		this.context = context;
@@ -64,24 +64,24 @@ public class Parameter
 	 * @deprecated Use 'Parameter.load(IContext, IMendixIdentifier)' instead.
 	 */
 	@java.lang.Deprecated
-	public static nativemobileactions.proxies.Parameter initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.Parameter initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
-		return nativemobileactions.proxies.Parameter.load(context, mendixIdentifier);
+		return nativemobileresources.proxies.Parameter.load(context, mendixIdentifier);
 	}
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
-	public static nativemobileactions.proxies.Parameter initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
+	public static nativemobileresources.proxies.Parameter initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		return new nativemobileactions.proxies.Parameter(context, mendixObject);
+		return new nativemobileresources.proxies.Parameter(context, mendixObject);
 	}
 
-	public static nativemobileactions.proxies.Parameter load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.Parameter load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
-		return nativemobileactions.proxies.Parameter.initialize(context, mendixObject);
+		return nativemobileresources.proxies.Parameter.initialize(context, mendixObject);
 	}
 
 	/**
@@ -463,7 +463,7 @@ public class Parameter
 
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
-			final nativemobileactions.proxies.Parameter that = (nativemobileactions.proxies.Parameter) obj;
+			final nativemobileresources.proxies.Parameter that = (nativemobileresources.proxies.Parameter) obj;
 			return getMendixObject().equals(that.getMendixObject());
 		}
 		return false;
@@ -480,7 +480,7 @@ public class Parameter
 	 */
 	public static java.lang.String getType()
 	{
-		return "NativeMobileActions.Parameter";
+		return "NativeMobileResources.Parameter";
 	}
 
 	/**

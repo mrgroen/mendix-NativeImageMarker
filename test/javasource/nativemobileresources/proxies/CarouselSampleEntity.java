@@ -2,7 +2,7 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
 public class CarouselSampleEntity
 {
@@ -13,7 +13,7 @@ public class CarouselSampleEntity
 	/**
 	 * Internal name of this entity
 	 */
-	public static final java.lang.String entityName = "NativeMobileActions.CarouselSampleEntity";
+	public static final java.lang.String entityName = "NativeMobileResources.CarouselSampleEntity";
 
 	/**
 	 * Enum describing members of this entity
@@ -38,15 +38,15 @@ public class CarouselSampleEntity
 
 	public CarouselSampleEntity(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileActions.CarouselSampleEntity"));
+		this(context, com.mendix.core.Core.instantiate(context, "NativeMobileResources.CarouselSampleEntity"));
 	}
 
 	protected CarouselSampleEntity(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject carouselSampleEntityMendixObject)
 	{
 		if (carouselSampleEntityMendixObject == null)
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("NativeMobileActions.CarouselSampleEntity", carouselSampleEntityMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileActions.CarouselSampleEntity");
+		if (!com.mendix.core.Core.isSubClassOf("NativeMobileResources.CarouselSampleEntity", carouselSampleEntityMendixObject.getType()))
+			throw new java.lang.IllegalArgumentException("The given object is not a NativeMobileResources.CarouselSampleEntity");
 
 		this.carouselSampleEntityMendixObject = carouselSampleEntityMendixObject;
 		this.context = context;
@@ -56,31 +56,31 @@ public class CarouselSampleEntity
 	 * @deprecated Use 'CarouselSampleEntity.load(IContext, IMendixIdentifier)' instead.
 	 */
 	@java.lang.Deprecated
-	public static nativemobileactions.proxies.CarouselSampleEntity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.CarouselSampleEntity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
-		return nativemobileactions.proxies.CarouselSampleEntity.load(context, mendixIdentifier);
+		return nativemobileresources.proxies.CarouselSampleEntity.load(context, mendixIdentifier);
 	}
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
-	public static nativemobileactions.proxies.CarouselSampleEntity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
+	public static nativemobileresources.proxies.CarouselSampleEntity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		return new nativemobileactions.proxies.CarouselSampleEntity(context, mendixObject);
+		return new nativemobileresources.proxies.CarouselSampleEntity(context, mendixObject);
 	}
 
-	public static nativemobileactions.proxies.CarouselSampleEntity load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static nativemobileresources.proxies.CarouselSampleEntity load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
-		return nativemobileactions.proxies.CarouselSampleEntity.initialize(context, mendixObject);
+		return nativemobileresources.proxies.CarouselSampleEntity.initialize(context, mendixObject);
 	}
 
-	public static java.util.List<nativemobileactions.proxies.CarouselSampleEntity> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
+	public static java.util.List<nativemobileresources.proxies.CarouselSampleEntity> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<nativemobileactions.proxies.CarouselSampleEntity> result = new java.util.ArrayList<nativemobileactions.proxies.CarouselSampleEntity>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//NativeMobileActions.CarouselSampleEntity" + xpathConstraint))
-			result.add(nativemobileactions.proxies.CarouselSampleEntity.initialize(context, obj));
+		java.util.List<nativemobileresources.proxies.CarouselSampleEntity> result = new java.util.ArrayList<nativemobileresources.proxies.CarouselSampleEntity>();
+		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//NativeMobileResources.CarouselSampleEntity" + xpathConstraint))
+			result.add(nativemobileresources.proxies.CarouselSampleEntity.initialize(context, obj));
 		return result;
 	}
 
@@ -175,7 +175,7 @@ public class CarouselSampleEntity
 
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
-			final nativemobileactions.proxies.CarouselSampleEntity that = (nativemobileactions.proxies.CarouselSampleEntity) obj;
+			final nativemobileresources.proxies.CarouselSampleEntity that = (nativemobileresources.proxies.CarouselSampleEntity) obj;
 			return getMendixObject().equals(that.getMendixObject());
 		}
 		return false;
@@ -192,7 +192,7 @@ public class CarouselSampleEntity
 	 */
 	public static java.lang.String getType()
 	{
-		return "NativeMobileActions.CarouselSampleEntity";
+		return "NativeMobileResources.CarouselSampleEntity";
 	}
 
 	/**

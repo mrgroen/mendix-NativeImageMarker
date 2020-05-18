@@ -2,15 +2,17 @@
 //
 // WARNING: Code you write here will be lost the next time you deploy the project.
 
-package nativemobileactions.proxies;
+package nativemobileresources.proxies;
 
-public enum Enumeration
+public enum StatusBarHideShowAnimation
 {
-	Test(new java.lang.String[][] { new java.lang.String[] { "en_US", "Test" } });
+	none(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" } }),
+	fade(new java.lang.String[][] { new java.lang.String[] { "en_US", "Fade" } }),
+	slide(new java.lang.String[][] { new java.lang.String[] { "en_US", "Slide" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private Enumeration(java.lang.String[][] captionStrings)
+	private StatusBarHideShowAnimation(java.lang.String[][] captionStrings)
 	{
 		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
 		for (java.lang.String[] captionString : captionStrings)
