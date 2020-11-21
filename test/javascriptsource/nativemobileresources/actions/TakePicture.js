@@ -6,8 +6,9 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { Alert, Linking } from "react-native";
+import { Alert, Linking, NativeModules } from "react-native";
 import ImagePicker from "react-native-image-picker";
+import { getLocales } from "react-native-localize";
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -18,11 +19,9 @@ import ImagePicker from "react-native-image-picker";
  * @param {"NativeMobileResources.PictureQuality.original"|"NativeMobileResources.PictureQuality.low"|"NativeMobileResources.PictureQuality.medium"|"NativeMobileResources.PictureQuality.high"|"NativeMobileResources.PictureQuality.custom"} pictureQuality - Set to empty to use default value 'medium'.
  * @param {Big} maximumWidth - The picture will be scaled to this maximum pixel width, while maintaing the aspect ratio.
  * @param {Big} maximumHeight - The picture will be scaled to this maximum pixel height, while maintaing the aspect ratio.
- * @param {string} widthAttributeName - Integer attribute name of the image entity. If set, will receive the width of the captured picture.
- * @param {string} heightAttributeName - Integer attribute name of the image entity. If set, will receive the height of the captured picture.
  * @returns {Promise.<boolean>}
  */
-export async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth, maximumHeight, widthAttributeName, heightAttributeName) {
+export async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth, maximumHeight) {
 	// BEGIN USER CODE
     // Documentation https://github.com/react-native-community/react-native-image-picker/blob/master/docs/Reference.md
     if (!picture) {
@@ -35,34 +34,12 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
     if (pictureQuality === "custom" && !maximumHeight && !maximumWidth) {
         return Promise.reject(new Error("Picture quality is set to 'Custom', but no maximum width or height was provided"));
     }
-    if (widthAttributeName) {
-        if (!picture.isNumeric(widthAttributeName)) {
-            return Promise.reject(new Error("Attribute " +
-                widthAttributeName +
-                " is no integer attribute or does not exist on entity " +
-                picture.getEntity()));
-        }
-    }
-    if (heightAttributeName) {
-        if (!picture.isNumeric(heightAttributeName)) {
-            return Promise.reject(new Error("Attribute " +
-                heightAttributeName +
-                " is no integer attribute or does not exist on entity " +
-                picture.getEntity()));
-        }
-    }
     return takePicture()
-        .then(response => {
-        if (!response || response.didCancel || !response.uri) {
+        .then(uri => {
+        if (!uri) {
             return false;
         }
-        if (widthAttributeName) {
-            picture.set(widthAttributeName, response.width);
-        }
-        if (heightAttributeName) {
-            picture.set(heightAttributeName, response.height);
-        }
-        return storeFile(picture, response.uri);
+        return storeFile(picture, uri);
     })
         .catch(error => {
         if (error === "canceled") {
@@ -85,7 +62,7 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
                     }
                     return reject(new Error(response.error));
                 }
-                return resolve(response);
+                return resolve(response.uri);
             });
         });
     }
@@ -97,8 +74,20 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
                 const guid = imageObject.getGuid();
                 // eslint-disable-next-line no-useless-escape
                 const filename = /[^\/]*$/.exec(uri)[0];
-                const onSuccess = () => resolve(true);
-                const onError = (error) => reject(error);
+                const onSuccess = () => {
+                    NativeModules.NativeFsModule.remove(uri).then(() => {
+                        imageObject.set("Name", filename);
+                        mx.data.commit({
+                            mxobj: imageObject,
+                            callback: () => resolve(true),
+                            error: (error) => reject(error)
+                        });
+                    });
+                };
+                const onError = (error) => {
+                    NativeModules.NativeFsModule.remove(uri).then(undefined);
+                    reject(error);
+                };
                 mx.data.saveDocument(guid, filename, {}, blob, onSuccess, onError);
             });
         });
@@ -119,16 +108,32 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     function getOptions() {
         const { maxWidth, maxHeight } = getPictureQuality();
+        const [language] = getLocales().map(local => local.languageCode);
+        const isDutch = language === "nl";
+
         return {
             mediaType: "photo",
             maxWidth,
             maxHeight,
             noData: true,
+            title: isDutch ? "Foto toevoegen" : "Select a photo",
+            cancelButtonTitle: isDutch ? "Annuleren" : "Cancel",
+            takePhotoButtonTitle: isDutch ? "Foto maken" : "Take photo",
+            chooseFromLibraryButtonTitle: isDutch ? "Kies uit bibliotheek" : "Choose from library",
             permissionDenied: {
-                title: "This app does not have access to your camera or photos",
-                text: "To enable access, tap Settings > Permissions and turn on Camera and Storage.",
-                reTryTitle: "Settings",
-                okTitle: "Cancel"
+                title: isDutch
+                    ? "Deze app heeft geen toegang tot uw camera of foto's"
+                    : "This app does not have access to your camera or photos",
+                text: isDutch
+                    ? "Ga naar Instellingen > Privacy om toegang tot uw camera en bestanden te verlenen."
+                    : "To enable access, tap Settings > Privacy and turn on Camera and Photos/Storage.",
+                reTryTitle: isDutch ? "Instellingen" : "Settings",
+                okTitle: isDutch ? "Annuleren" : "Cancel"
+            },
+            storageOptions: {
+                skipBackup: true,
+                cameraRoll: false,
+                privateDirectory: true
             }
         };
     }

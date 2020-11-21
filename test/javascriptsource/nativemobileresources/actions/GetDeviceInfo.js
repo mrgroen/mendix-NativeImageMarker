@@ -18,7 +18,7 @@ import { getLocales, getCountry, getTimeZone, uses24HourClock } from "react-nati
 export async function GetDeviceInfo() {
 	// BEGIN USER CODE
     return Promise.all([
-        createMxObject("NativeMobileActions.DeviceInfo"),
+        createMxObject("NativeMobileResources.DeviceInfo"),
         DeviceInfo.getBatteryLevel(),
         DeviceInfo.getFontScale(),
         DeviceInfo.getFreeDiskStorage(),
