@@ -5,12 +5,12 @@ import ImageZoom from "react-native-image-pan-zoom";
 
 export class NativeImageViewer extends Component {
     state = {
-        modalVisible: true,
+        imageVisible: true,
         windowWidth: Dimensions.get("window").width,
         windowHeight: Dimensions.get("window").height
     };
     render() {
-        const { imageToView, imageWidthAttr, imageHeightAttr } = this.props;
+        const { imageToView, imageWidthAttr, imageHeightAttr, showModal } = this.props;
         if (!imageToView || imageToView.status !== "available" || !imageToView.value.uri) {
             return null;
         }
@@ -30,26 +30,31 @@ export class NativeImageViewer extends Component {
         };
 
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
-        return (
-            <Modal visible={this.state.modalVisible} transparent={true}>
-                <ImageZoom
-                    cropWidth={this.state.windowWidth}
-                    cropHeight={this.state.windowHeight}
-                    imageWidth={imageWidth}
-                    imageHeight={imageHeight}
-                    enableCenterFocus={false}
-                    minScale={0.3}
-                    centerOn={centerOn}
-                    onClick={() => this.onClick()}
-                >
-                    {this.renderImage(imageStyle)}
-                </ImageZoom>
-            </Modal>
-        );
+        const imageZoom = (<ImageZoom
+            cropWidth={this.state.windowWidth}
+            cropHeight={this.state.windowHeight}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            enableCenterFocus={false}
+            minScale={0.3}
+            centerOn={centerOn}
+            onClick={() => this.onClick()}
+        >
+            {this.renderImage(imageStyle)}
+        </ImageZoom>);
+        if (showModal) {
+            return (
+                <Modal visible={this.state.imageVisible} transparent={true}>
+                    {imageZoom}
+                </Modal>
+            );    
+        } else {
+            return imageZoom;
+        }
     }
 
     renderImage(imageStyle) {
-        if (this.state.modalVisible) {
+        if (this.state.imageVisible) {
             // console.info("NativeImageViewer render image");
             return <Image source={this.props.imageToView.value} style={imageStyle} />;
         } else {
