@@ -5,31 +5,33 @@
 // To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
 //
 
-/* Based on https://github.com/mendixlabs/star-rating/blob/v1.1.1/src/ui/StarRating.scss */
-span.widget-star-rating-full-default {
-    color: $brand-default;
-}
+/* ==========================================================================
+   Rating
 
-span.widget-star-rating-full-primary {
+//== Design Properties
+//## Helper classes to change the look and feel of the component
+========================================================================== */
+
+.widget-star-rating-full-primary {
     color: $brand-primary;
 }
 
-span.widget-star-rating-full-success {
+.widget-star-rating-full-success {
     color: $brand-success;
 }
 
-span.widget-star-rating-full-info {
+.widget-star-rating-full-info {
     color: $brand-info;
 }
 
-span.widget-star-rating-full-warning {
+.widget-star-rating-full-warning {
     color: $brand-warning;
 }
 
-span.widget-star-rating-full-danger {
+.widget-star-rating-full-danger {
     color: $brand-danger;
 }
 
-span.widget-star-rating-full-inverse {
+.widget-star-rating-full-inverse {
     color: $brand-inverse;
 }
