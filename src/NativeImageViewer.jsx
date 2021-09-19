@@ -30,24 +30,26 @@ export class NativeImageViewer extends Component {
         };
 
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
-        const imageZoom = (<ImageZoom
-            cropWidth={this.state.windowWidth}
-            cropHeight={this.state.windowHeight}
-            imageWidth={imageWidth}
-            imageHeight={imageHeight}
-            enableCenterFocus={false}
-            minScale={0.3}
-            centerOn={centerOn}
-            onClick={() => this.onClick()}
-        >
-            {this.renderImage(imageStyle)}
-        </ImageZoom>);
+        const imageZoom = (
+            <ImageZoom
+                cropWidth={this.state.windowWidth}
+                cropHeight={this.state.windowHeight}
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                enableCenterFocus={false}
+                minScale={0.3}
+                centerOn={centerOn}
+                onClick={() => this.onClick()}
+            >
+                {this.renderImage(imageStyle)}
+            </ImageZoom>
+        );
         if (showModal) {
             return (
                 <Modal visible={this.state.imageVisible} transparent={true}>
                     {imageZoom}
                 </Modal>
-            );    
+            );
         } else {
             return imageZoom;
         }
