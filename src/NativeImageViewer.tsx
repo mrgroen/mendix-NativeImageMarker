@@ -1,9 +1,10 @@
 import { Component, createElement } from "react";
 import { Dimensions, Modal, PixelRatio } from "react-native";
 import { Image } from "mendix/components/native/Image";
-import ImageZoom from "react-native-image-pan-zoom";
+import ImageZoom from "./image-zoom/image-zoom.component";
+import { NativeImageViewerProps } from "typings/NativeImageViewerProps";
 
-export class NativeImageViewer extends Component {
+export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
     state = {
         imageVisible: true,
         windowWidth: Dimensions.get("window").width,
@@ -11,7 +12,12 @@ export class NativeImageViewer extends Component {
     };
     render() {
         const { imageToView, imageWidthAttr, imageHeightAttr, showModal } = this.props;
-        if (!imageToView || imageToView.status !== "available" || !imageToView.value.uri) {
+
+        if (!imageToView || imageToView.status !== "available" || !imageToView.value) {
+            return null;
+        }
+
+        if (imageWidthAttr.status !== "available" || imageHeightAttr.status !== "available") {
             return null;
         }
 
@@ -29,7 +35,10 @@ export class NativeImageViewer extends Component {
             duration: 100
         };
 
+        console.info(`dim: ${imageWidth}, ${imageHeight}`);
+
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
+
         const imageZoom = (
             <ImageZoom
                 cropWidth={this.state.windowWidth}
