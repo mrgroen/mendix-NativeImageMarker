@@ -1,7 +1,7 @@
 import { Component, createElement } from "react";
 import { Dimensions, Modal, PixelRatio } from "react-native";
 import { Image } from "mendix/components/native/Image";
-import ImageZoom from "./image-zoom/image-zoom.component";
+import ImageZoom from "react-native-image-pan-zoom";
 import { NativeImageViewerProps } from "typings/NativeImageViewerProps";
 
 export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
@@ -34,8 +34,6 @@ export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
             scale: scaleX < scaleY ? scaleX : scaleY,
             duration: 100
         };
-
-        console.info(`dim: ${imageWidth}, ${imageHeight}`);
 
         const imageStyle = [{ width: imageWidth, height: imageHeight }];
 
