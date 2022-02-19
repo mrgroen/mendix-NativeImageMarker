@@ -62,7 +62,7 @@ export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
         }
     }
 
-    renderImage(imageStyle) {
+    renderImage(imageStyle: any) {
         if (this.state.imageVisible) {
             // console.info("NativeImageViewer render image");
             return <Image source={this.props.imageToView.value} style={imageStyle} />;
@@ -72,7 +72,7 @@ export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
         }
     }
 
-    handler = newDimensions => {
+    handler = (newDimensions: { window: { height: any; width: any } }) => {
         // console.info(
         //     "NativeImageViewer dimension change handler, new width: " +
         //         newDimensions.window.width +

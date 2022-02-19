@@ -22,7 +22,8 @@ public class WidgetExport
 	{
 		String("String"),
 		Decimal("Decimal"),
-		Enumeration("Enumeration");
+		Enumeration("Enumeration"),
+		Bool("Bool");
 
 		private java.lang.String metaName;
 
@@ -223,6 +224,42 @@ public class WidgetExport
 			getMendixObject().setValue(context, MemberNames.Enumeration.toString(), enumeration.toString());
 		else
 			getMendixObject().setValue(context, MemberNames.Enumeration.toString(), null);
+	}
+
+	/**
+	 * @return value of Bool
+	 */
+	public final java.lang.Boolean getBool()
+	{
+		return getBool(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Bool
+	 */
+	public final java.lang.Boolean getBool(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Bool.toString());
+	}
+
+	/**
+	 * Set value of Bool
+	 * @param bool
+	 */
+	public final void setBool(java.lang.Boolean bool)
+	{
+		setBool(getContext(), bool);
+	}
+
+	/**
+	 * Set value of Bool
+	 * @param context
+	 * @param bool
+	 */
+	public final void setBool(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean bool)
+	{
+		getMendixObject().setValue(context, MemberNames.Bool.toString(), bool);
 	}
 
 	/**
