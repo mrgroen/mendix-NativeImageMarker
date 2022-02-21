@@ -1,7 +1,7 @@
 import { Component, createElement } from "react";
 import { Dimensions, Modal, PixelRatio } from "react-native";
 import { Image } from "mendix/components/native/Image";
-import ImageZoom from "react-native-image-pan-zoom";
+import ImageZoom from "./image-zoom/image-zoom.component";
 import { NativeImageViewerProps } from "typings/NativeImageViewerProps";
 
 export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
