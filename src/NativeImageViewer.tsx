@@ -4,6 +4,12 @@ import { Image } from "mendix/components/native/Image";
 import ImageZoom from "./image-zoom/image-zoom.component";
 import { NativeImageViewerProps } from "typings/NativeImageViewerProps";
 
+/*
+ *
+ * The code for the library is copied into the image-zoom folder to make the widget work with the Mx9 widget tools!
+ * This is until a permanent fix is released.
+ */
+
 export class NativeImageViewer extends Component<NativeImageViewerProps<{}>> {
     state = {
         imageVisible: true,
