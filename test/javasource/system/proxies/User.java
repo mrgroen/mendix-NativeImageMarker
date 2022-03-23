@@ -4,6 +4,9 @@
 
 package system.proxies;
 
+/**
+ * Represents a user of the Mendix platform.
+ */
 public class User
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject userMendixObject;
@@ -24,6 +27,7 @@ public class User
 		Password("Password"),
 		LastLogin("LastLogin"),
 		Blocked("Blocked"),
+		BlockedSince("BlockedSince"),
 		Active("Active"),
 		FailedLogins("FailedLogins"),
 		WebServiceUser("WebServiceUser"),
@@ -253,6 +257,42 @@ public class User
 	public final void setBlocked(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean blocked)
 	{
 		getMendixObject().setValue(context, MemberNames.Blocked.toString(), blocked);
+	}
+
+	/**
+	 * @return value of BlockedSince
+	 */
+	public final java.util.Date getBlockedSince()
+	{
+		return getBlockedSince(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of BlockedSince
+	 */
+	public final java.util.Date getBlockedSince(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.util.Date) getMendixObject().getValue(context, MemberNames.BlockedSince.toString());
+	}
+
+	/**
+	 * Set value of BlockedSince
+	 * @param blockedsince
+	 */
+	public final void setBlockedSince(java.util.Date blockedsince)
+	{
+		setBlockedSince(getContext(), blockedsince);
+	}
+
+	/**
+	 * Set value of BlockedSince
+	 * @param context
+	 * @param blockedsince
+	 */
+	public final void setBlockedSince(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date blockedsince)
+	{
+		getMendixObject().setValue(context, MemberNames.BlockedSince.toString(), blockedsince);
 	}
 
 	/**

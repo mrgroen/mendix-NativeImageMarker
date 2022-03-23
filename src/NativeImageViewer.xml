@@ -26,10 +26,6 @@
                     <attributeType name="Integer"/>
                 </attributeTypes>
             </property>
-            <property key="showModal" type="boolean" defaultValue="true">
-                <caption>Show modal</caption>
-                <description>Show as modal. When true, image is rendered in a model. When false, image is rendered directly</description>
-            </property>
             <property key="onCloseAction" type="action" required="false">
                 <caption>On close action</caption>
                 <description>Action to trigger when modal closed or image clicked.</description>

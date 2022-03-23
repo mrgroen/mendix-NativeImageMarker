@@ -14270,13 +14270,13 @@ input[type=datetime-local].has-value:before {
 .widget-badge.badge:empty {
   display: initial;
   /* Fix padding to stay round */
-  padding: 4px 10px;
+  padding: 4px calc(8px + 2px);
 }
 
 .widget-badge.label:empty {
   display: initial;
   /* Fix padding to stay square */
-  padding: 4px 10px;
+  padding: 4px calc(8px + 2px);
 }
 
 /* ==========================================================================
@@ -14469,7 +14469,7 @@ badge widget
 .btn img,
 .mx-button img,
 .mx-link img {
-  height: 18px;
+  height: calc(14px + 4px);
   margin-right: 4px;
   vertical-align: text-top;
 }
@@ -17214,8 +17214,8 @@ input[type=radio] + label {
   text-align: center;
 }
 .tab-wizard.mx-tabcontainer > .mx-tabcontainer-tabs > li > a {
-  width: 33px;
-  height: 33px;
+  width: calc((16px * 2) + 1px);
+  height: calc((16px * 2) + 1px);
   margin: auto;
   padding: 0;
   text-align: center;
@@ -21225,7 +21225,7 @@ html div.dj_ios .widget-switch.auto .widget-switch-btn-wrapper.checked.widget-sw
   display: flex;
   padding: 8px;
   align-items: center;
-  min-height: 52px;
+  min-height: calc(48px + 4px);
   background: #171946;
 }
 .layout-atlas-responsive .region-sidebar .mx-scrollcontainer-wrapper .toggle-btn,
@@ -21767,7 +21767,7 @@ html div.dj_ios .widget-switch.auto .widget-switch-btn-wrapper.checked.widget-sw
 
 .wizard-arrow .wizard-step {
   height: 48px;
-  margin-left: -24px;
+  margin-left: calc(0px - (48px / 2));
   padding-left: 24px;
   background-color: #fff;
   justify-content: flex-start;
@@ -21777,14 +21777,14 @@ html div.dj_ios .widget-switch.auto .widget-switch-btn-wrapper.checked.widget-sw
   position: absolute;
   z-index: 1;
   left: 100%;
-  margin-left: -23px;
+  margin-left: calc(0px - ((48px / 2) - 1px));
   content: " ";
   border-style: solid;
   border-color: transparent;
 }
 .wizard-arrow .wizard-step::after {
   top: 0;
-  border-width: 23px;
+  border-width: calc((48px / 2) - 1px);
   border-left-color: #fff;
 }
 .wizard-arrow .wizard-step::before {

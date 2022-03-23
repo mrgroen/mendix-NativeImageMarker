@@ -23,6 +23,7 @@ public class Account extends system.proxies.User
 		Password("Password"),
 		LastLogin("LastLogin"),
 		Blocked("Blocked"),
+		BlockedSince("BlockedSince"),
 		Active("Active"),
 		FailedLogins("FailedLogins"),
 		WebServiceUser("WebServiceUser"),
