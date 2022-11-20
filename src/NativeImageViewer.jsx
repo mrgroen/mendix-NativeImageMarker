@@ -1,17 +1,36 @@
-import { PixelRatio, View, useWindowDimensions } from "react-native";
-import { Image } from "mendix/components/native/Image";
+import { /* Image,*/ PixelRatio, View, useWindowDimensions } from "react-native";
+import { Image /* as MendixImage*/ } from "mendix/components/native/Image";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 
 import { createElement } from "react";
 
-export function NativeImageViewer({ imageToView, imageWidthAttr, imageHeightAttr, onCloseAction }) {
+export function NativeImageViewer({
+    imageSource,
+    imageToView,
+    imageUrl,
+    imageWidthAttr,
+    imageHeightAttr,
+    onCloseAction
+}) {
     const window = useWindowDimensions();
 
-    if (!imageToView || imageToView.status !== "available" || !imageToView.value) {
-        return null;
+    switch (imageSource) {
+        case "mendixImage":
+            if (!imageToView || imageToView.status !== "available" || !imageToView.value) {
+                return null;
+            }
+            break;
+
+        case "url":
+            if (!imageUrl || imageUrl.status !== "available" || !imageUrl.value) {
+                return null;
+            }
+            break;
+
+        default:
     }
 
-    if (imageWidthAttr.status !== "available" || imageHeightAttr.status !== "available") {
+    if (!imageWidthAttr.value || !imageHeightAttr.value) {
         return null;
     }
 
@@ -28,6 +47,19 @@ export function NativeImageViewer({ imageToView, imageWidthAttr, imageHeightAttr
         // Landscape
         zoomRatio = window.height / imageHeight;
     }
+
+    // const renderImage = () => {
+    //     switch (imageSource) {
+    //         case "mendixImage":
+    //             return <MendixImage source={imageToView.value} style={{ width: imageWidth, height: imageHeight }} />;
+
+    //         case "url":
+    //             return <Image source={{ uri: imageUrl.value }} style={{ width: imageWidth, height: imageHeight }} />;
+
+    //         default:
+    //             return null;
+    //     }
+    // };
 
     return (
         <View style={{ flex: 1 }}>

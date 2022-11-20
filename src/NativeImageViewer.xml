@@ -8,9 +8,24 @@
     <studioProCategory>Images, videos &amp; files</studioProCategory>
     <properties>
         <propertyGroup caption="General">
-            <property key="imageToView" type="image">
+            <property key="imageSource" type="enumeration" defaultValue="mendixImage">
+                <caption>Image source</caption>
+                <description></description>
+                <enumerationValues>
+                    <enumerationValue key="mendixImage">Mendix image</enumerationValue>
+                    <enumerationValue key="url">URL</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="imageToView" type="image" required="false">
                 <caption>Image to view</caption>
                 <description></description>
+            </property>
+            <property key="imageUrl" type="attribute" required="false">
+                <caption>Image URL</caption>
+                <description></description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
             </property>
             <property key="imageWidthAttr" type="attribute">
                 <caption>Image width</caption>
