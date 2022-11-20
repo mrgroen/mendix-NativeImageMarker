@@ -6,7 +6,7 @@
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "license": "Apache-2.0",
   "config": {
@@ -23,7 +23,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "9.11.0",
+    "@mendix/pluggable-widgets-tools": "^9.0.0",
     "patch-package": "^6.5.0"
   },
   "dependencies": {

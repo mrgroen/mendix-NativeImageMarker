@@ -1,6 +1,7 @@
-import { /* Image,*/ PixelRatio, View, useWindowDimensions } from "react-native";
-import { Image /* as MendixImage*/ } from "mendix/components/native/Image";
+import { PixelRatio, View, useWindowDimensions } from "react-native";
+import { MendixImage } from "./components/MendixImage";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
+import { UrlImage } from "./components/UrlImage";
 
 import { createElement } from "react";
 
@@ -48,18 +49,18 @@ export function NativeImageViewer({
         zoomRatio = window.height / imageHeight;
     }
 
-    // const renderImage = () => {
-    //     switch (imageSource) {
-    //         case "mendixImage":
-    //             return <MendixImage source={imageToView.value} style={{ width: imageWidth, height: imageHeight }} />;
+    const renderImage = () => {
+        switch (imageSource) {
+            case "mendixImage":
+                return <MendixImage imageToView={imageToView} imageWidth={imageWidth} imageHeight={imageHeight} />;
 
-    //         case "url":
-    //             return <Image source={{ uri: imageUrl.value }} style={{ width: imageWidth, height: imageHeight }} />;
+            case "url":
+                return <UrlImage uri={imageUrl.value} imageWidth={imageWidth} imageHeight={imageHeight} />;
 
-    //         default:
-    //             return null;
-    //     }
-    // };
+            default:
+                return null;
+        }
+    };
 
     return (
         <View style={{ flex: 1 }}>
@@ -75,7 +76,7 @@ export function NativeImageViewer({
                     }
                 }}
             >
-                <Image source={imageToView.value} style={{ width: imageWidth, height: imageHeight }} />
+                {renderImage()}
             </ReactNativeZoomableView>
         </View>
     );
