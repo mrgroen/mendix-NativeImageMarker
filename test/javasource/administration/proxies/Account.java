@@ -19,6 +19,7 @@ public class Account extends system.proxies.User
 		FullName("FullName"),
 		Email("Email"),
 		IsLocalUser("IsLocalUser"),
+		OfflineDebug("OfflineDebug"),
 		Name("Name"),
 		Password("Password"),
 		LastLogin("LastLogin"),
@@ -201,6 +202,42 @@ public class Account extends system.proxies.User
 	public final void setIsLocalUser(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean islocaluser)
 	{
 		getMendixObject().setValue(context, MemberNames.IsLocalUser.toString(), islocaluser);
+	}
+
+	/**
+	 * @return value of OfflineDebug
+	 */
+	public final java.lang.Boolean getOfflineDebug()
+	{
+		return getOfflineDebug(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of OfflineDebug
+	 */
+	public final java.lang.Boolean getOfflineDebug(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.OfflineDebug.toString());
+	}
+
+	/**
+	 * Set value of OfflineDebug
+	 * @param offlinedebug
+	 */
+	public final void setOfflineDebug(java.lang.Boolean offlinedebug)
+	{
+		setOfflineDebug(getContext(), offlinedebug);
+	}
+
+	/**
+	 * Set value of OfflineDebug
+	 * @param context
+	 * @param offlinedebug
+	 */
+	public final void setOfflineDebug(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean offlinedebug)
+	{
+		getMendixObject().setValue(context, MemberNames.OfflineDebug.toString(), offlinedebug);
 	}
 
 	@java.lang.Override

@@ -81,11 +81,26 @@ public class FileDocument
 	 */
 	public static system.proxies.FileDocument initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.DeviceLogFile", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.DeviceLogFile.initialize(context, mendixObject);
+		}
 		if (com.mendix.core.Core.isSubClassOf("System.Image", mendixObject.getType())) {
 			return system.proxies.Image.initialize(context, mendixObject);
 		}
 		if (com.mendix.core.Core.isSubClassOf("System.SynchronizationErrorFile", mendixObject.getType())) {
 			return system.proxies.SynchronizationErrorFile.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestDocument", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestDocument.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestWriteFile", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestWriteFile.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestWriteFileResult", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestWriteFileResult.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestZip", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestZip.initialize(context, mendixObject);
 		}
 		return new system.proxies.FileDocument(context, mendixObject);
 	}

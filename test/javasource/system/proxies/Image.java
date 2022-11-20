@@ -72,8 +72,23 @@ public class Image extends system.proxies.FileDocument
 	 */
 	public static system.proxies.Image initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.CroppedImage", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.CroppedImage.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.ImageToResize", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.ImageToResize.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.ResizedImage", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.ResizedImage.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestCropImage", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestCropImage.initialize(context, mendixObject);
+		}
 		if (com.mendix.core.Core.isSubClassOf("TestModule.TestImage", mendixObject.getType())) {
 			return testmodule.proxies.TestImage.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestMessageImage", mendixObject.getType())) {
+			return testnativefiledocuments.proxies.TestMessageImage.initialize(context, mendixObject);
 		}
 		return new system.proxies.Image(context, mendixObject);
 	}
