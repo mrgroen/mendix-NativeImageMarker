@@ -19,12 +19,14 @@
     "lint": "pluggable-widgets-tools lint",
     "lint:fix": "pluggable-widgets-tools lint:fix",
     "prerelease": "npm run lint",
-    "release": "pluggable-widgets-tools release:native"
+    "release": "pluggable-widgets-tools release:native",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "9.11.0"
+    "@mendix/pluggable-widgets-tools": "9.11.0",
+    "patch-package": "^6.5.0"
   },
   "dependencies": {
-    "@openspacelabs/react-native-zoomable-view": "2.0.0"
+    "@openspacelabs/react-native-zoomable-view": "^2.1.1"
   }
 }
