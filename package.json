@@ -1,7 +1,7 @@
 {
   "name": "nativeimageviewer",
   "widgetName": "NativeImageViewer",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Mendix native image viewer",
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",

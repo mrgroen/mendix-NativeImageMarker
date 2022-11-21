@@ -40,14 +40,10 @@ export function NativeImageViewer({
     const pixelDensity = PixelRatio.get();
     imageWidth = PixelRatio.roundToNearestPixel(imageWidth / pixelDensity);
     imageHeight = PixelRatio.roundToNearestPixel(imageHeight / pixelDensity);
-    let zoomRatio = 0;
-    if (window.height > window.width) {
-        // Portrait
-        zoomRatio = window.width / imageWidth;
-    } else {
-        // Landscape
-        zoomRatio = window.height / imageHeight;
-    }
+    // Calculate the smallest zoom ratio and use that for the image zoom ratio.
+    const zoomRatioWidth = window.width / imageWidth;
+    const zoomRatioHeight = window.height / imageHeight;
+    const zoomRatio = zoomRatioHeight < zoomRatioWidth ? zoomRatioHeight : zoomRatioWidth;
 
     const renderImage = () => {
         switch (imageSource) {
