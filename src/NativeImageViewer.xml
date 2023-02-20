@@ -27,24 +27,78 @@
                     <attributeType name="String"/>
                 </attributeTypes>
             </property>
-            <property key="imageWidthAttr" type="attribute">
+            <property key="imageWidthAttr" type="attribute" required="false">
                 <caption>Image width</caption>
                 <description></description>
                 <attributeTypes>
                     <attributeType name="Integer"/>
                 </attributeTypes>
             </property>
-            <property key="imageHeightAttr" type="attribute">
+            <property key="imageHeightAttr" type="attribute" required="false">
                 <caption>Image height</caption>
                 <description></description>
                 <attributeTypes>
                     <attributeType name="Integer"/>
                 </attributeTypes>
             </property>
-            <property key="onCloseAction" type="action" required="false">
-                <caption>On close action</caption>
-                <description>Action to trigger when modal closed or image clicked.</description>
-            </property>
+        </propertyGroup>
+        <propertyGroup caption="Markers">
+            <propertyGroup caption="Datasource">
+                <property key="markerDatasource" type="datasource" isList="true" required="false">
+                    <caption>Marker datasource</caption>
+                    <description></description>
+                </property>
+                <property key="markerLeftAttr" type="attribute" dataSource="markerDatasource" required="false">
+                    <caption>Marker left (%)</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="markerTopAttr" type="attribute" dataSource="markerDatasource" required="false">
+                    <caption>Marker top (%)</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="markerColorAttr" type="attribute" dataSource="markerDatasource" required="false">
+                    <caption>Marker color</caption>
+                    <description>Use HEX or RGB.</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="markerEditable" type="expression" dataSource="markerDatasource" required="false">
+                    <caption>Marker editable</caption>
+                    <description></description>
+                    <returnType type="Boolean"/>
+                </property>
+                <property key="onMarkerPressAction" type="action" dataSource="markerDatasource" required="false">
+                    <caption>Press action</caption>
+                    <description>Action to trigger when marker is pressed.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="New marker">
+                <property key="newMarkerLeftAttr" type="attribute" required="false">
+                    <caption>Marker left (%)</caption>
+                    <description>Attribute to store the new marker value.</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="newMarkerTopAttr" type="attribute" required="false">
+                    <caption>Marker top (%)</caption>
+                    <description>Attribute to store the new marker value.</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="newMarkerAction" type="action" required="false">
+                    <caption>New marker action</caption>
+                    <description>Action after setting the new marker values.</description>
+                </property>
+            </propertyGroup>
         </propertyGroup>
     </properties>
 </widget>
