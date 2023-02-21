@@ -1,10 +1,10 @@
 {
-  "name": "nativeimageviewer",
-  "widgetName": "NativeImageViewer",
-  "version": "3.1.1",
-  "description": "Mendix native image viewer",
-  "copyright": "ITvisors 2020",
-  "author": "Marcel Groeneweg",
+  "name": "nativeimagemarker",
+  "widgetName": "NativeImageMarker",
+  "version": "1.0.0",
+  "description": "Mendix native image marker",
+  "copyright": "Groen.dev 2023",
+  "author": "Marcus Groen",
   "engines": {
     "node": ">=16"
   },
@@ -12,7 +12,7 @@
   "config": {
     "projectPath": "./test/"
   },
-  "packagePath": "itvisors",
+  "packagePath": "com.groendev.widget.native",
   "scripts": {
     "start": "pluggable-widgets-tools start:native",
     "build": "pluggable-widgets-tools build:native",

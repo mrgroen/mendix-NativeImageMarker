@@ -3,7 +3,7 @@ import { StyleSheet, PixelRatio, View, Animated, Image } from "react-native";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import { Marker } from "./components/Marker";
 
-export function NativeImageViewer({
+export function NativeImageMarker({
     imageSource,
     imageToView,
     imageUrl,
@@ -55,16 +55,16 @@ export function NativeImageViewer({
     useEffect(() => {
         if (markerDatasource) {
             if (markerDatasource.status !== "available") return;
+            let testMarkers = [];
+            markerDatasource.items?.map((item) => {
+                let left = markerLeftAttr.get(item).value;
+                let top = markerTopAttr.get(item).value;
+                let color = markerColorAttr.get(item).value;
+                testMarkers.push({ 'item': item, 'left': `${left}%`, 'top': `${top}%`, 'color': `${color}` });
+            });
+            setMarkers(testMarkers);
         }
-        let testMarkers = [];
-        markerDatasource.items?.map((item) => {
-            let left = markerLeftAttr.get(item).value;
-            let top = markerTopAttr.get(item).value;
-            let color = markerColorAttr.get(item).value;
-            testMarkers.push({ 'item': item, 'left': `${left}%`, 'top': `${top}%`, 'color': `${color}` });
-        });
-        setMarkers(testMarkers);
-    }, [markerDatasource, markerDatasource.status, markerDatasource.items]);
+    }, [markerDatasource]);
 
     // Checking input requirements, nothing to render without them.
     switch (imageSource) {
@@ -82,22 +82,6 @@ export function NativeImageViewer({
 
         default: return null;
     }
-
-    // Setup markers in state.
-    /*
-    if (markers === null) {
-        // Array of static markers for testing purposes.
-        let testMarkers = [];
-        [20, 40, 60].map(
-            (left) => [20, 40, 60].map(
-                (top) => {
-                    testMarkers.push({ 'left': `${left}%`, 'top': `${top}%`, 'color': '#516DFF' });
-                }
-            )
-        );
-        setMarkers(testMarkers);
-    }
-    */
 
     // Store container sizes in state.
     const onLayoutLogic = (event) => {

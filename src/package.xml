@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <package xmlns="http://www.mendix.com/package/1.0/">
-    <clientModule name="NativeImageViewer" version="3.1.1" xmlns="http://www.mendix.com/clientModule/1.0/">
+    <clientModule name="NativeImageMarker" version="1.0.0" xmlns="http://www.mendix.com/clientModule/1.0/">
         <widgetFiles>
-            <widgetFile path="NativeImageViewer.xml"/>
+            <widgetFile path="NativeImageMarker.xml"/>
         </widgetFiles>
         <files>
-            <file path="itvisors/nativeimageviewer"/>
+            <file path="com/groendev/widget/native/nativeimagemarker"/>
         </files>
     </clientModule>
 </package>
