@@ -1,24 +1,17 @@
-## NativeImageViewer
-View images, with zoom and pan
+## NativeImageMarker
+View and mark images, with zoom and pan support.
 
 ## Features
-- Shows the image full screen 
-- Allows zooming and panning
-- Tap image to close viewer
-- Image source can be Mendix image, base64 encoded data URL or a local file on the device
-
-## Image width / height
-Widget needs the image width/height. For images created in the backend, use CommunityCommons.GetImageDimensions. For images taken in the native app, use the TakePictureAdvanced JavaScript action, which returns the dimensions in the ImageMetaData object.
+- Show image full screen or in a parent container. (the image will scale to fit the parent container)
+- Zooming and panning. (drag, pinch, double-tap)
+- Image source can be a Mendix image, base64 encoded data URL or local file on the device.
+- Display makers on the image. (with custom colors)
+- Add markers using a single tap.
 
 ## Usage
-- Place widget on a page, preferably with a full page layout and no other content.
-- Configure a close action, usually just Close page is sufficient.
-
-Please note that the widget assumes to show the image fullscreen, so use a fullpage layout and take out any spacing.
-
-The intended use of this widget is to show it without any other content on the page.
-
-It is possible to put other content, like a header or footer, on the page, these will overlay the image.
+- Place widget on a page.
+- Configure image source. (optional width/height)
+- Configure optional markers datasource and optional add marker settings.
 
 ### Data URL
 For base64 encoded image data, the data must have the data URL prefix, where `<ext>` is the image format, like jpg or png: 
