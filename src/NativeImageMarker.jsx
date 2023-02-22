@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect, createElement, Fragment } from "react";
-import { StyleSheet, PixelRatio, View, Animated, Image } from "react-native";
+import React, { Platform, useRef, useState, useEffect, createElement, Fragment } from "react";
+import { StyleSheet, PixelRatio, View, Animated } from "react-native";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
+import FastImageComponent from 'react-native-fast-image';
 import { Marker } from "./components/Marker";
 
 export function NativeImageMarker({
@@ -30,24 +31,18 @@ export function NativeImageMarker({
         zoomAnimatedValue.current = new Animated.Value(1);
     }
     const scale = Animated.divide(1, zoomAnimatedValue.current);
-    const pixelDensity = PixelRatio.get();
 
     // Hook to calculate and set the correct sizes.
     useEffect(() => {
         let width = imageWidthAttr && !isNaN(imageWidthAttr.value) ? imageWidthAttr.value : imageSize.width;
         let height = imageHeightAttr && !isNaN(imageHeightAttr.value) ? imageHeightAttr.value : imageSize.height;
-        let newWidth = PixelRatio.roundToNearestPixel(width / pixelDensity);
-        let newHeight = PixelRatio.roundToNearestPixel(height / pixelDensity);
+        let newWidth = PixelRatio.getPixelSizeForLayoutSize(width);
+        let newHeight = PixelRatio.getPixelSizeForLayoutSize(height);
         const widthRatio = containerSize.width / newWidth;
-        const HeightRatio = containerSize.height / newHeight;
-        if (newWidth > containerSize.width) {
-            newWidth *= widthRatio;
-            newHeight *= widthRatio;
-        }
-        if (newHeight > containerSize.height) {
-            newWidth *= HeightRatio;
-            newHeight *= HeightRatio;
-        }
+        const heightRatio = containerSize.height / newHeight;
+        const zoomRatio = heightRatio < widthRatio ? heightRatio : widthRatio;
+        newWidth *= zoomRatio;
+        newHeight *= zoomRatio;
         setViewDimension({ 'width': newWidth, 'height': newHeight });
     }, [containerSize, imageSize]);
 
@@ -104,6 +99,27 @@ export function NativeImageMarker({
         )
     };
 
+    const getSource = () => {
+        if (imageSource == 'url') {
+            // URL image
+            return {
+                uri: imageUrl.value
+            }
+        } else if (imageSource == 'mendixImage') {
+            if (typeof imageToView.value === "number") {
+                // Static image
+                return imageToView.value;
+            } else if (imageToView.value?.uri) {
+                // Dynamic image
+                return {
+                    ...imageToView.value,
+                    uri: (Platform.OS === "android" ? "file:///" : "") + imageToView.value.uri
+                }
+            }
+        }
+        return undefined;
+    };
+
     return (
         <View style={styles.container} onLayout={onLayoutLogic} collapsable={false}>
 
@@ -135,11 +151,12 @@ export function NativeImageMarker({
 
                 <View style={viewDimension} collapsable={false}>
 
-                    <Image
-                        ref={imageRef}
-                        source={imageSource.Value == 'url' ? imageUrl.value : imageToView.value}
-                        onLoad={({ nativeEvent: { source: { width, height } } }) => setImageSize({ width, height })}
-                        style={styles.img} />
+                    <FastImageComponent
+                        onLoad={({ nativeEvent: { width, height } }) => setImageSize({ width, height })}
+                        source={getSource()}
+                        resizeMode={'contain'}
+                        style={styles.img}
+                    />
 
                     {renderMarkers()}
 
@@ -161,8 +178,7 @@ const styles = StyleSheet.create({
     },
     img: {
         width: '100%',
-        height: '100%',
-        resizeMode: 'contain'
+        height: '100%'
     },
     markerHeart: {
         position: 'absolute',

@@ -31,19 +31,15 @@
                     <attributeType name="String"/>
                 </attributeTypes>
             </property>
-            <property key="imageWidthAttr" type="attribute" required="false">
+            <property key="imageWidthAttr" type="expression" required="false">
                 <caption>Image width</caption>
                 <description></description>
-                <attributeTypes>
-                    <attributeType name="Integer"/>
-                </attributeTypes>
+                <returnType type="Integer"/>
             </property>
-            <property key="imageHeightAttr" type="attribute" required="false">
+            <property key="imageHeightAttr" type="expression" required="false">
                 <caption>Image height</caption>
                 <description></description>
-                <attributeTypes>
-                    <attributeType name="Integer"/>
-                </attributeTypes>
+                <returnType type="Integer"/>
             </property>
         </propertyGroup>
         <propertyGroup caption="Markers">

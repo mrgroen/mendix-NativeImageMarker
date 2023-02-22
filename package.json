@@ -27,6 +27,7 @@
     "patch-package": "^6.5.0"
   },
   "dependencies": {
-    "@openspacelabs/react-native-zoomable-view": "^2.1.1"
+    "@openspacelabs/react-native-zoomable-view": "^2.1.1",
+    "react-native-fast-image": "^8.6.3"
   }
 }
