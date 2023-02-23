@@ -11,6 +11,11 @@ export function Marker({
     const pressLast = useRef(null);
     const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
+    // Checking input requirements, nothing to render without them.
+    if (!marker || !styles || !scale) {
+        return null;
+    }
+
     // Function to handle single and double taps
     const tapHandler = (singleTap, doubleTap) => {
         const now = Date.now();
@@ -42,8 +47,11 @@ export function Marker({
             ]}
             onPress={()=>{
                 console.debug('onPress');
-                if (onMarkerPressAction && onMarkerPressAction.canExecute && !onMarkerPressAction.isExecuting) {
-                    onMarkerPressAction.execute();
+                if (onMarkerPressAction && marker.item) {
+                    let mxAction = onMarkerPressAction.get(marker.item);
+                    if (mxAction && mxAction.canExecute && !mxAction.isExecuting) {
+                        mxAction.execute();
+                    }
                 }
             }}
             onLongPress={()=>{

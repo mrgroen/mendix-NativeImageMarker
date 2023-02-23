@@ -50,14 +50,14 @@ export function NativeImageMarker({
     useEffect(() => {
         if (markerDatasource) {
             if (markerDatasource.status !== "available") return;
-            let testMarkers = [];
+            let newMarkers = [];
             markerDatasource.items?.map((item) => {
                 let left = markerLeftAttr.get(item).value;
                 let top = markerTopAttr.get(item).value;
                 let color = markerColorAttr.get(item).value;
-                testMarkers.push({ 'item': item, 'left': `${left}%`, 'top': `${top}%`, 'color': `${color}` });
+                newMarkers.push({ 'item': item, 'left': `${left}%`, 'top': `${top}%`, 'color': `${color}` });
             });
-            setMarkers(testMarkers);
+            setMarkers(newMarkers);
         }
     }, [markerDatasource]);
 
