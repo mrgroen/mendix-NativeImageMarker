@@ -20,9 +20,9 @@ export function NativeImageMarker({
     newMarkerTopAttr,
     newMarkerAction
 }) {
-    const [imageSize, setImageSize] = useState({ width: 100, height: 100 }); // default to get things started
-    const [containerSize, setContainerSize] = useState({ width: 100, height: 100 }); // default to get things started
-    const [viewDimension, setViewDimension] = useState({ width: 100, height: 100 }); // default to get things started
+    const [imageSize, setImageSize] = useState({ width: undefined, height: undefined });
+    const [containerSize, setContainerSize] = useState({ width: undefined, height: undefined });
+    const [viewDimension, setViewDimension] = useState({ width: undefined, height: undefined });
     const [markers, setMarkers] = useState(null);
     const zoomableViewRef = useRef(null);
     const imageRef = useRef(null);
@@ -36,11 +36,12 @@ export function NativeImageMarker({
     useEffect(() => {
         let width = imageWidthAttr && !isNaN(imageWidthAttr.value) ? imageWidthAttr.value : imageSize.width;
         let height = imageHeightAttr && !isNaN(imageHeightAttr.value) ? imageHeightAttr.value : imageSize.height;
+        if (!width || !height || !containerSize || !containerSize.width || !containerSize.height) return;
         let newWidth = PixelRatio.getPixelSizeForLayoutSize(width);
         let newHeight = PixelRatio.getPixelSizeForLayoutSize(height);
-        const widthRatio = containerSize.width / newWidth;
-        const heightRatio = containerSize.height / newHeight;
-        const zoomRatio = heightRatio < widthRatio ? heightRatio : widthRatio;
+        let widthRatio = containerSize.width / newWidth;
+        let heightRatio = containerSize.height / newHeight;
+        let zoomRatio = heightRatio < widthRatio ? heightRatio : widthRatio;
         newWidth *= zoomRatio;
         newHeight *= zoomRatio;
         setViewDimension({ 'width': newWidth, 'height': newHeight });
@@ -154,7 +155,7 @@ export function NativeImageMarker({
                     <FastImageComponent
                         onLoad={({ nativeEvent: { width, height } }) => setImageSize({ width, height })}
                         source={getSource()}
-                        resizeMode={'contain'}
+                        resizeMode={FastImageComponent.resizeMode.contain}
                         style={styles.img}
                     />
 
